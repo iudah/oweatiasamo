@@ -1,0 +1,223 @@
+@import url(light.css);
+@import url(dark.css);
+
+/* Base setup using the CSS variables from .light */
+body.light,
+body.dark {
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  font-family: Arial, sans-serif;
+  padding: 16px;
+  line-height: 1.6;
+}
+
+/* Reset and utility styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Card component */
+.card {
+  background-color: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Card title */
+.card-head {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: var(--md-sys-color-primary);
+}
+
+/* Idioms strip */
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: var(--md-sys-color-surface-container);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.strip span,
+#page_suggestions h2 span.s_tab_hidden {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Forms */
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--md-sys-color-primary-container);
+}
+
+form div.s_tab_hidden {
+  display: none;
+}
+
+#page_suggestions h2 {
+  display: flex;
+  gap: 1px;
+}
+
+#page_suggestions h2 span {
+  width: 50%;
+  text-align: center;
+}
+
+#page_suggestions h2 span.s_tab_hidden {
+  color: var(--md-sys-color-on-surface);
+  /* border: 1px solid var(--md-sys-color-outline-variant); */
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom: 0px;
+}
+
+/* Comments */
+#comments {
+  background-color: var(--md-sys-color-surface);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+#comments h3 {
+  margin-bottom: 12px;
+  color: var(--md-sys-color-tertiary);
+}
+
+.comment {
+  padding: 10px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment button {
+  margin-top: 5px;
+  background-color: var(--md-sys-color-error);
+  color: var(--md-sys-color-on-error);
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment button:hover {
+  background-color: var(--md-sys-color-error-container);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .card,
+  .strip,
+  #comments {
+    padding: 12px;
+  }
+
+  .card-head {
+    font-size: 1.1em;
+  }
+
+  .strip {
+    flex-direction: column;
+  }
+
+  form input[type="email"],
+  form textarea,
+  form button {
+    font-size: 1em;
+  }
+}
+
+/* Smooth transitions for interactive elements */
+.card,
+form input[type="email"],
+form textarea,
+form button,
+.comment button,
+.strip span {
+  transition: all 0.3s ease;
+}
+
+/* Hover effects and animations */
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+form input[type="email"]:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 5px var(--md-sys-color-primary);
+}
+
+/* Button interactions */
+form button:hover,
+.comment button:hover {
+  transform: scale(1.05);
+}
+
+/* Fade in animation on load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+#comments,
+.strip,
+form {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0; /* Initially hidden until animated in */
+}
+
+/* Delay stagger for multiple cards (optional improvement) */
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
