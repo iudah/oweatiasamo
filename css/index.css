@@ -56,6 +56,24 @@ body.dark {
   font-weight: bold;
 }
 
+@keyframes colorChange {
+  from {
+    color: var(--md-sys-color-on-secondary-container);
+  }
+  to {
+    color: var(--md-sys-color-on-primary);
+  }
+}
+
+.strip span:hover a {
+  animation: colorChange 0.8s ease forwards;
+}
+
+.strip span a {
+  color: var(--md-sys-color-on-secondary-container);
+  text-decoration: none;
+}
+
 /* Forms */
 form input[type="email"],
 form textarea {
@@ -101,6 +119,10 @@ form div.s_tab_hidden {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border-bottom: 0px;
+}
+
+#page_suggestions h2 span.s_tab_hidden:hover {
+  animation: colorChange 0.8s ease forwards;
 }
 
 /* Comments */
