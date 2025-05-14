@@ -1,4 +1,3 @@
-show databases;
 create database owe_db;
 use owe_db;
 
